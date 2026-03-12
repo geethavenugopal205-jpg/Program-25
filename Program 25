@@ -1,0 +1,18 @@
+class Solution:
+    def findDuplicates(self, arr):
+        duplicates = []
+        
+        for x in arr:
+            # Use the absolute value as an index (1-based to 0-based)
+            index = abs(x) - 1
+            
+            # If the value at this index is already negative, 
+            # we've encountered this number before.
+            if arr[index] < 0:
+                duplicates.append(abs(x))
+            else:
+                # Mark the value as visited by making it negative
+                arr[index] = -arr[index]
+                
+        return duplicates
+        
